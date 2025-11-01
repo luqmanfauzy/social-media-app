@@ -3,9 +3,12 @@ import type { Story } from "../types/story";
 import { dummyStoriesData } from "../assets/assets";
 import { Plus } from "lucide-react";
 import moment from "moment";
+import StoryModal from "./StoryModal";
 
 function StoriesBar() {
   const [stories, setStories] = useState<Story[]>([]);
+  const [showModal, setShowModal] = useState(false);
+  const [viewStory, setviewStory] = useState(null);
 
   useEffect(() => {
     setStories(dummyStoriesData as Story[]);
@@ -13,7 +16,10 @@ function StoriesBar() {
 
   return (
     <div className="w-screen sm:w-[calc(100vw-240px)] lg:max-w-2xl overflow-x-auto no-scrollbar px-4">
-      <div className="flex gap-4 pb-5 flex-nowrap">
+      <div
+        onClick={() => setShowModal(true)}
+        className="flex gap-4 pb-5 flex-nowrap"
+      >
         {/* Add Story Card */}
         <div className="rounded-lg shadow-sm min-w-[120px] max-w-[120px] aspect-[3/4] cursor-pointer hover:shadow-lg transition-all duration-200 border-2 border-dashed border-indigo-300 bg-gradient-to-b from-indigo-50 to-white flex items-center justify-center flex-col p-4">
           <div className="w-10 h-10 bg-indigo-500 rounded-full flex items-center justify-center mb-3">
@@ -60,7 +66,11 @@ function StoriesBar() {
           </div>
         ))}
       </div>
-    </div>
+      {/* add story modal */}
+      {showModal && (
+        <StoryModal setShowModal={setShowModal} fetchStories={setStories} />
+      )}
+    </div>  
   );
 }
 
