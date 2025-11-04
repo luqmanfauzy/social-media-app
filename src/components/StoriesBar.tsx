@@ -4,6 +4,7 @@ import { dummyStoriesData } from "../assets/assets";
 import { Plus } from "lucide-react";
 import moment from "moment";
 import StoryModal from "./StoryModal";
+import StoryViewer from "./StoryViewer";
 
 function StoriesBar() {
   const [stories, setStories] = useState<Story[]>([]);
@@ -25,7 +26,7 @@ function StoriesBar() {
           <div className="w-10 h-10 bg-indigo-500 rounded-full flex items-center justify-center mb-3">
             <Plus className="text-white w-5 h-5" />
           </div>
-          <p className="text-sm font-medium text-slate-700 text-center">
+          <p className=" text-sm font-medium text-slate-700 text-center">
             Create Story
           </p>
         </div>
@@ -33,6 +34,7 @@ function StoriesBar() {
         {/* Story Cards */}
         {stories.map((story, index) => (
           <div
+            onClick={() => setviewStory(story)}
             key={index}
             className="relative rounded-lg shadow min-w-[120px] max-w-[120px] aspect-[3/4] cursor-pointer hover:shadow-lg transition-all duration-200 bg-gradient-to-b from-indigo-500 to-purple-600 hover:from-indigo-700 hover:to-purple-800 active:scale-95 overflow-hidden"
           >
@@ -70,6 +72,8 @@ function StoriesBar() {
       {showModal && (
         <StoryModal setShowModal={setShowModal} fetchStories={setStories} />
       )}
+      {/* view story modal */}
+      {viewStory && <StoryViewer viewStory={viewStory} setViewStory={setviewStory} />}
     </div>  
   );
 }

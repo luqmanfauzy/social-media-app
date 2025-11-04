@@ -1,21 +1,23 @@
-import { Routes, Route } from "react-router-dom"
-import Login from "./pages/Login"
-import Feed from "./pages/Feed"
-import ChatBox from "./pages/ChatBox"
-import Messages from "./pages/Messages"
-import Connections from "./pages/Connections"
-import Profile from "./pages/Profile"
-import Discover from "./pages/Disvover"
-import CreatePost from "./pages/CreatePost"
-import Layout from "./pages/Layout"
-import { useUser } from "@clerk/clerk-react"
+import { Routes, Route } from "react-router-dom";
+import Login from "./pages/Login";
+import Feed from "./pages/Feed";
+import ChatBox from "./pages/ChatBox";
+import Messages from "./pages/Messages";
+import Connections from "./pages/Connections";
+import Profile from "./pages/Profile";
+import Discover from "./pages/Disvover";
+import CreatePost from "./pages/CreatePost";
+import Layout from "./pages/Layout";
+import { useUser } from "@clerk/clerk-react";
+import { Toaster } from "react-hot-toast";
 
 function App() {
-  const { user } = useUser()
+  const { user } = useUser();
   return (
     <>
+      <Toaster />
       <Routes>
-        <Route path="/" element={ !user ? <Login /> : <Layout />}>
+        <Route path="/" element={!user ? <Login /> : <Layout />}>
           <Route index element={<Feed />} />
           <Route path="messages" element={<Messages />} />
           <Route path="messages/:userId" element={<ChatBox />} />
@@ -27,7 +29,7 @@ function App() {
         </Route>
       </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
