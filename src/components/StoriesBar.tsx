@@ -9,7 +9,7 @@ import StoryViewer from "./StoryViewer";
 function StoriesBar() {
   const [stories, setStories] = useState<Story[]>([]);
   const [showModal, setShowModal] = useState(false);
-  const [viewStory, setviewStory] = useState(null);
+  const [viewStory, setviewStory] = useState<Story | null>(null);
 
   useEffect(() => {
     setStories(dummyStoriesData as Story[]);
@@ -17,12 +17,12 @@ function StoriesBar() {
 
   return (
     <div className="w-screen sm:w-[calc(100vw-240px)] lg:max-w-2xl overflow-x-auto no-scrollbar px-4">
-      <div
-        onClick={() => setShowModal(true)}
-        className="flex gap-4 pb-5 flex-nowrap"
-      >
+      <div className="flex gap-4 pb-5 flex-nowrap">
         {/* Add Story Card */}
-        <div className="rounded-lg shadow-sm min-w-[120px] max-w-[120px] aspect-[3/4] cursor-pointer hover:shadow-lg transition-all duration-200 border-2 border-dashed border-indigo-300 bg-gradient-to-b from-indigo-50 to-white flex items-center justify-center flex-col p-4">
+        <div
+          onClick={() => setShowModal(true)}
+          className="rounded-lg shadow-sm min-w-[120px] max-w-[120px] aspect-[3/4] cursor-pointer hover:shadow-lg transition-all duration-200 border-2 border-dashed border-indigo-300 bg-gradient-to-b from-indigo-50 to-white flex items-center justify-center flex-col p-4"
+        >
           <div className="w-10 h-10 bg-indigo-500 rounded-full flex items-center justify-center mb-3">
             <Plus className="text-white w-5 h-5" />
           </div>
@@ -73,8 +73,10 @@ function StoriesBar() {
         <StoryModal setShowModal={setShowModal} fetchStories={setStories} />
       )}
       {/* view story modal */}
-      {viewStory && <StoryViewer viewStory={viewStory} setViewStory={setviewStory} />}
-    </div>  
+      {viewStory && (
+        <StoryViewer viewStory={viewStory} setViewStory={setviewStory} />
+      )}
+    </div>
   );
 }
 
