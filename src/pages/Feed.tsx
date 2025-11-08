@@ -4,6 +4,7 @@ import Loading from "../components/Loading";
 import type { Post } from "../types/post";
 import StoriesBar from "../components/StoriesBar";
 import PostCard from "../components/PostCard";
+import RecentMessages from "../components/RecentMessages";
 
 function Feed() {
   const [feeds, setFeeds] = useState<Post[]>([]);
@@ -38,7 +39,7 @@ function Feed() {
           <p className="text-slate-600">Email Marketing</p>
           <p className="text-slate-400">Supercharge your marketing with a powerfull, easy to use platform built for results.</p>
         </div>
-        <h1>Recent Messages</h1>
+        <RecentMessages />
       </div>
     </div>
   ) : (

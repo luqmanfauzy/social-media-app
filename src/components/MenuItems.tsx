@@ -2,7 +2,6 @@ import React from "react";
 import { menuItemsData } from "../assets/assets";
 import { NavLink } from "react-router-dom";
 
-
 function MenuItems({
   setSidebarOpen,
 }: {
