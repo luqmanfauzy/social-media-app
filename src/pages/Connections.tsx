@@ -17,10 +17,10 @@ function Connections() {
   const [currentTab, setCurrentTab] = useState("Followers");
   const navigate = useNavigate();
   const dataArray = [
-    { label: "Followers", value: followers, icon: Users },
-    { label: "Following", value: following, icon: UserCheck },
-    { label: "Pending", value: pendingConnections, icon: UserRoundPen },
-    { label: "Connections", value: connections, icon: UserPlus },
+    { label: "Followers", value: followers, icon: Users, count: followers.length },
+    { label: "Following", value: following, icon: UserCheck, count: following.length },
+    { label: "Pending", value: pendingConnections, icon: UserRoundPen, count: pendingConnections.length },
+    { label: "Connections", value: connections, icon: UserPlus, count: connections.length },
   ];
   return (
     <div className="min-h-screen bg-slate-50">
@@ -63,7 +63,7 @@ function Connections() {
               <tab.icon className="w-4 h-4" />
               <span className="ml-1">{tab.label}</span>
               {tab.count !== undefined && (
-                <span className="ml-2 text-xs bg-gray-100 text-gray-700 px-2 py-0.5 rounded-full">
+                <span className="border ml-2 text-xs bg-gray-100 text-gray-700 px-2 py-0.5 rounded-full">
                   {tab.count}
                 </span>
               )}
@@ -78,7 +78,7 @@ function Connections() {
             ?.value.map((user) => (
               <div
                 key={user._id}
-                className="border w-full max-w-80 flex gap-5 p-6 bg-white shadow rounded-md"
+                className="w-full max-w-80 flex gap-5 p-6 bg-white shadow rounded-md"
               >
                 <img
                   src={user.profile_picture}
