@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { dummyRecentMessagesData } from "../assets/assets";
-import type { RecentMessages } from "../types/recentMessages";
+import type { RecentMessages as RecentMessagesType } from "../types/recentMessages";
 import { Link } from "react-router-dom";
 import moment from "moment";
 
 function RecentMessages() {
-  const [messages, setMessages] = useState<RecentMessages[] | null>(null);
+  const [messages, setMessages] = useState<RecentMessagesType[] | null>(null);
 
   const fetchRecentMessages = async () => {
     setMessages(dummyRecentMessagesData);
@@ -19,7 +19,7 @@ function RecentMessages() {
     <div className="bg-white max-w-xs mt-4 p-4 min-h-20 rounded-md shadow text-xs text-slate-800">
       <h3 className="font-semibold text-slate-8 mb-4">Recent Messages</h3>
       <div className="flex flex-col max-h-56 overflow-y-scroll no-scrollbar">
-        {messages?.map((message: RecentMessages, index: number) => {
+        {messages?.map((message: RecentMessagesType, index: number) => {
           return (
             <Link
               to={`/messages/${message.from_user_id._id}`}
