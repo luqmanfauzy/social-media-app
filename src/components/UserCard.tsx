@@ -6,7 +6,9 @@ function UserCard({ user }: { user: User }) {
   const currentUser = dummyUserData;
   const handleFollow = async () => {};
 
-  const handleConnectionRequest = async () => {};
+  const handleConnectionRequest = async () => {
+    
+  };
   return (
     <div
       key={user._id}
@@ -50,7 +52,10 @@ function UserCard({ user }: { user: User }) {
           {currentUser?.following.includes(user._id) ? "Following" : "Follow"}
         </button>
         {/* connection request button / message button */}
-        <button onClick={handleConnectionRequest} className="flex items-center justify-center w-16 border-gray-400 border text-slate-500 group rounded-md cursor-pointer active:scale-95 transition">
+        <button
+          onClick={handleConnectionRequest}
+          className="flex items-center justify-center w-16 border-gray-400 border text-slate-500 group rounded-md cursor-pointer active:scale-95 transition"
+        >
           {currentUser?.connections.includes(user._id) ? (
             <MessageCircle className="w-5 h-5 group-hover:scale-105 transition" />
           ) : (
