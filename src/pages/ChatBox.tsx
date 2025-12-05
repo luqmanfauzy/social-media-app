@@ -58,9 +58,9 @@ function ChatBox() {
 
           <label htmlFor="image">
             {
-              image 
-              ? <img src={URL.createObjectURL(image)} alt="" className="h-8 rounded-full" /> 
-              : <ImageIcon className="size-7 text-gray-400 cursor-pointer" />
+              image
+                ? <img src={URL.createObjectURL(image)} alt="" className="h-8 rounded-full" />
+                : <ImageIcon className="size-7 text-gray-400 cursor-pointer" />
             }
             <input type="file" id="image" accept="image/*" hidden onChange={(e) => setImage(e.target.files?.[0] || null)} />
           </label>
